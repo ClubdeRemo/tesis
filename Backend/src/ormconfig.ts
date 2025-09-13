@@ -6,17 +6,18 @@ dotenv.config();
 
 export const AppDataSource = new DataSource({
     type: 'postgres',
-    host: 'dpg-d1sljivgi27c739gn1b0-a.oregon-postgres.render.com',
+    host: 'dpg-d314p0vdiees73ahae8g-a.oregon-postgres.render.com', // host externo de Render
     port: 5432,
-    username: 'club_remo_db_user',
-    password: 'l6mdamWYqP4heH5fFQyEADNKGp6mlNRF',
-    database: 'club_remo_db',
+    username: 'club_remo_db_z8xc_user',
+    password: 'ludC1IhMDLdYqjOu45Pto4Ac1abLQiPV',
+    database: 'club_remo_db_z8xc',
     ssl: {
-    rejectUnauthorized: false, // <- Necesario para Render
+        rejectUnauthorized: false, // obligatorio para Render
     },
-    entities: [__dirname + '/**//*.entity{.ts,.js}'],
-    logging: true,
-}); // PARA POSTGRE SQL RENDER 
+    synchronize: false, // ⚠️ cambia a true SOLO si querés que genere tablas automáticamente        logging: true,
+    entities: [__dirname + '/**/*.entity{.ts,.js}'], // tu ruta de entidades
+    migrations: [__dirname + '/migrations/**/*{.ts,.js}'], // para migraciones si las usás
+});// PARA POSTGRE SQL RENDER 
 
 /* export const AppDataSource = new DataSource({
     type: 'mysql',
